@@ -9,13 +9,11 @@ class BookingController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    static scaffold = Booking
-/*
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond bookingService.list(params), model:[bookingCount: bookingService.count()]
     }
-*/
+
     def show(Long id) {
         respond bookingService.get(id)
     }

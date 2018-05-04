@@ -7,10 +7,11 @@ class Booking {
 	Double deposit
 
 	static belongsTo = Guest
-	static hasMany = [guests:Guest]
+	static hasMany = [guests: Guest]
+	static hasOne = [room: Room]
 
     static constraints = {
-    	from(blank:false, nullable:false)
-    	to(blank:false, nullable:false)
+    	startDate(blank: false, nullable: false)
+    	endDate(blank: false, nullable: false)
     }
 }
