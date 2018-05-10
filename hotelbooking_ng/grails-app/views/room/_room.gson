@@ -1,0 +1,7 @@
+import com.acme.hotelbooking.Room
+
+model {
+	Room room
+}
+
+json g.render(room, [resolveTemplate: false])

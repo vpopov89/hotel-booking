@@ -1,0 +1,7 @@
+import com.acme.hotelbooking.Booking
+
+model {
+	Booking booking
+}
+
+json g.render(booking, [resolveTemplate: false])

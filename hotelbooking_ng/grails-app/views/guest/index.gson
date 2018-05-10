@@ -1,0 +1,8 @@
+import com.acme.hotelbooking.Guest
+
+model {
+	Iterable<Guest> guestList
+}
+
+json tmpl.guest(guestList ?: [])
+
