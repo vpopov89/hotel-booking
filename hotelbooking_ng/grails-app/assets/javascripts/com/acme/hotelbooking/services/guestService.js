@@ -12,5 +12,5 @@ angular
 
 	this.saveGuest = function(guest, callback) {
 		$http.post(guestApiUri, guest).then(callback);
-	}
+	};
 });

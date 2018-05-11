@@ -4,6 +4,8 @@ angular
 	.module("com.acme.hotelbooking")
 	.controller("NewBookingController", function($scope, guestService, roomService, bookingService) {
 
+    $scope.statusMessage = '';
+    
 	$scope.booking = {
 		guests: []
 	}
@@ -45,8 +47,13 @@ angular
     };
 
     $scope.saveBooking = function() {
+        $scope.statusMessage = '';
+
         bookingService.saveBooking($scope.booking, function(response) {
-            $scope.booking = null;
+            $scope.statusMessage = "Succeessfully saved booking";
+            $scope.booking = {
+                guests: []
+            };
         });
     };
 });

@@ -26,7 +26,15 @@
 
 <body ng-app="com.acme.hotelbooking">
 
-    <new-booking />
+    <md-content>
+        <section layout="row" layout-sm="column" layout-align="left center" layout-wrap>
+            <md-button href="#!newBooking" class="md-raised">Make new booking</md-button>
+            <md-button href="#!houseKeeping" class="md-raised">House keeping</md-button>
+        </section>
+    </md-content>
+
+    <ng-view />
+    <!-- <new-booking /> -->
 
     <asset:javascript src="/com/acme/hotelbooking/com.acme.hotelbooking.js" />
     <asset:javascript src="/com/acme/hotelbooking/services/guestService.js" />

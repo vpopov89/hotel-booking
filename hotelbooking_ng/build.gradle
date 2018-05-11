@@ -95,6 +95,9 @@ clientDependencies {
         'angular-resource'('1.6.x', into: 'angular') {
             include 'angular-resource.js'
         }
+        'angular-route'('1.6.x', into: 'angular') {
+            include 'angular-route.js'
+        }
         'angular-ui-bootstrap'('1.3.x', into: 'angular') {
             include 'ui-bootstrap-tpls.js'
         }

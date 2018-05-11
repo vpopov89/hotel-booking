@@ -1,6 +1,7 @@
 //= wrapped
 //= require /angular/angular 
 //= require /angular/angular-material
+//= require /angular/angular-route
 //= require /angular-animate/angular-animate
 //= require /angular-aria/angular-aria
 //= require_self
@@ -10,5 +11,9 @@
 //= require_tree domain
 //= require_tree templates
 
-angular.module("com.acme.hotelbooking", ['ngMaterial']);
-
+var app = angular.module("com.acme.hotelbooking", ['ngRoute', 'ngMaterial']);
+app.config(function($routeProvider) {
+	$routeProvider
+	.when("/newBooking", { templateUrl: "/com/acme/hotelbooking/newBooking.html", controller: "NewBookingController" })
+	.when("/houseKeeping", { templateUrl: "/com/acme/hotelbooking/houseKeeping.html", controller: "HouseKeepingController" });
+});

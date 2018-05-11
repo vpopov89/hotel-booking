@@ -10,9 +10,8 @@ class BookingController {
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond bookingService.list(params), model:[bookingCount: bookingService.count()]
+    def index() {
+        respond bookingService.list(), model:[bookingCount: bookingService.count()]
     }
 
     def show(Long id) {

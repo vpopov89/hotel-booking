@@ -1,0 +1,17 @@
+<div>
+	<md-content class="md-padding" style="width: 1000px;">
+		<div ng-if="statusMessage" id="statusMessage">
+			<b layout="row" layout-align="center center" class="md-padding">{{ statusMessage }}</b>
+		</div>
+		<md-list ng-cloak>
+			<md-subheader class="md-no-sticky">Rooms currently in use</md-subheader>
+			<md-list-item ng-repeat="room in currentlyBookedRooms">
+				<p><b>Room {{ room.name }}</b>, 
+					booked from: {{ getCurrentBookingForRoom(room).startDate | date : 'MMMM dd'}}, 
+					till {{ getCurrentBookingForRoom(room).endDate | date : 'MMMM dd' }}</p>
+				<md-button class="md-raised" ng-click="toggleRoomStatus(room)" style="width: 100px;">{{ room.status }}</md-button>
+			</md-list-item>
+			<md-button class="md-raised" ng-click="saveRooms()" style="width: 100px;">Save</md-button>
+		</md-list>
+	</md-content>
+</div>

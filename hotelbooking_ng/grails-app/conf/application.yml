@@ -61,6 +61,8 @@ grails:
         defaultScope: singleton
     converters:
         encoding: UTF-8
+    databinding:
+        dateFormats: "yyyy-MM-dd'T'HH:mm:ss.SSSX"
 
 ---
 hibernate:

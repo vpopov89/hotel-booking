@@ -6,13 +6,21 @@ import static org.springframework.http.HttpStatus.*
 class RoomController {
 
     RoomService roomService
+    BookingService bookingService
 
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond roomService.list(params), model:[roomCount: roomService.count()]
+    def index() {
+        if (params.currentlyBooked || params.currentlyBooked == '') {
+            def todayDate = new Date()
+            // FIXME move this to the BookingService
+            def bookings = Booking.findAllByStartDateLessThanEqualsAndEndDateGreaterThanEquals(todayDate, todayDate)
+            def currentlyBookedRooms = bookings.collect { booking -> booking.room }
+            respond currentlyBookedRooms, model:[roomCount: roomService.count()]
+        } else {
+            respond roomService.list(), model:[roomCount: roomService.count()]
+        }
     }
 
     def show(Long id) {
