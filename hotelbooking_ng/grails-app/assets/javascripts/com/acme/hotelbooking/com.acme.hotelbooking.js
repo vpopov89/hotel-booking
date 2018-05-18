@@ -15,5 +15,6 @@ var app = angular.module("com.acme.hotelbooking", ['ngRoute', 'ngMaterial']);
 app.config(function($routeProvider) {
 	$routeProvider
 	.when("/newBooking", { templateUrl: "/com/acme/hotelbooking/newBooking.html", controller: "NewBookingController" })
+	.when("/manageBookings", { templateUrl: "/com/acme/hotelbooking/manageBookings.html", controller: "ManageBookingsController" })
 	.when("/houseKeeping", { templateUrl: "/com/acme/hotelbooking/houseKeeping.html", controller: "HouseKeepingController" });
 });

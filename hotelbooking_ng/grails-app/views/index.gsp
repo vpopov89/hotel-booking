@@ -12,7 +12,9 @@
         }
     </style>
 
+<!--
     <asset:stylesheet src="application.css"/>
+-->
 
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 
@@ -27,21 +29,18 @@
 <body ng-app="com.acme.hotelbooking">
 
     <md-content>
-        <section layout="row" layout-sm="column" layout-align="left center" layout-wrap>
-            <md-button href="#!newBooking" class="md-raised">Make new booking</md-button>
-            <md-button href="#!houseKeeping" class="md-raised">House keeping</md-button>
-        </section>
+        <md-nav-bar md-no-ink-bar="disableInkBar" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-href="#!newBooking" name="newBooking">Make a new booking</md-nav-item>
+            <md-nav-item md-nav-href="#!manageBookings" name="manageBookings">Manage bookings</md-nav-item>
+            <md-nav-item md-nav-href="#!houseKeeping" name="houseKeeping">House keeping</md-nav-item>
+        </md-nav-bar>
     </md-content>
 
     <ng-view />
-    <!-- <new-booking /> -->
 
     <asset:javascript src="/com/acme/hotelbooking/com.acme.hotelbooking.js" />
     <asset:javascript src="/com/acme/hotelbooking/services/guestService.js" />
-    <asset:javascript src="/com/acme/hotelbooking/controllers/newBookingController1.js" />
+    <asset:javascript src="/com/acme/hotelbooking/controllers/newBookingController.js" />
 
-    <asset:javascript src="/com/acme/hotelbooking/controllers/newBookingController1.js" />
-
-    
 </body>
 </html>

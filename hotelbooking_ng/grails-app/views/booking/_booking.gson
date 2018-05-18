@@ -4,4 +4,4 @@ model {
 	Booking booking
 }
 
-json g.render(booking, [resolveTemplate: false])
+json g.render(booking, [resolveTemplate: false, expand: ['guests']])

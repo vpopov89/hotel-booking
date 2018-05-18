@@ -1,0 +1,68 @@
+<div>
+	<div layout="row" style="width: 800px;">
+		<md-input-container>
+			<label for="testInput">Start date</label>
+			<md-datepicker ng-model="booking.startDate" />
+		</md-input-container>
+		<md-input-container>
+			<label for="testInput">End date</label>
+			<md-datepicker ng-model="booking.endDate" />
+		</md-input-container>
+		<md-input-container>
+			<label for="testInput">Deposit</label>
+			<input ng-model="booking.deposit" required type="text" />
+		</md-input-container>
+		<md-input-container>
+			<label for="testInput">Room</label>
+			<md-select ng-model="booking.room.id" required>
+				<md-option ng-value="{{ room.id }}" ng-repeat="room in rooms">Room {{ room.name }}</md-option>
+			</md-select>
+		</md-input-container>
+	</div>
+	
+	<h1 class="md-toolbar-tools" ng-if="booking.guests && booking.guests.length > 0">Guests</h1>
+	<div layout="row" ng-repeat="guest in booking.guests">
+		<md-input-container>
+			<label for="testInput">First name</label>
+			<input ng-model="guest.firstName" type="text"/>
+		</md-input-container>
+		<md-input-container>
+			<label for="testInput">Last name</label>
+			<input ng-model="guest.lastName" type="text" />
+		</md-input-container>
+		<md-input-container>
+			<label for="testInput">Phone number</label>
+			<input ng-model="guest.phoneNumber" type="text" />
+		</md-input-container>
+		<md-button class="md-primary" ng-click="removeGuestFromBooking($index)">Remove</md-button>
+	</div>
+
+	<h1 class="md-toolbar-tools">Add new guest</h1>
+	<div layout="row">
+		<md-input-container>
+			<label for="testInput">First name</label>
+			<input ng-model="newGuest.firstName" type="text"/>
+		</md-input-container>
+		<md-input-container>
+			<label for="testInput">Last name</label>
+			<input ng-model="newGuest.lastName" type="text" />
+		</md-input-container>
+		<md-input-container>
+			<label for="testInput">Phone number</label>
+			<input ng-model="newGuest.phoneNumber" type="text" />
+		</md-input-container>
+		<md-button class="md-primary" ng-click="saveNewGuest()">Add</md-button>
+	</div>
+
+	<h1 class="md-toolbar-tools">Search existing guests</h1>
+	<md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="guest in searchGuests(searchText)" 
+		md-item-text="guest.firstName + ' ' + guest.lastName + ' ' + guest.phoneNumber">
+		<md-item-template>
+			<span md-highlight-text="searchText">{{ guest.firstName + ' ' + guest.lastName + ' ' + guest.phoneNumber }}</span>
+		</md-item-template>
+	</md-autocomplete>
+	<md-button class="md-primary" ng-click="addExistingGuestFromSearch(selectedItem)">Add existing guest</md-button>
+	<br />
+	<md-button class="md-primary" ng-click="saveBooking()">Save booking</md-button>
+	<md-button ng-if="mode == 'edit'" class="md-primary" ng-click="cancelBooking()">Cancel booking</md-button>
+</div>

@@ -6,7 +6,7 @@ class Guest {
 	String lastName
 	String phoneNumber
 
-	static hasMany=[booking: Booking]
+	static hasMany=[bookings: Booking]
 
     static constraints = {
     	

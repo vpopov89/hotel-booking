@@ -1,80 +1,30 @@
 <div>
-	<md-content class="md-padding" style="width: 1000px;">
-		<div ng-if="statusMessage" id="statusMessage">
-			<b layout="row" layout-align="center center" class="md-padding">{{ statusMessage }}</b>
-		</div>
-		<h2>New booking</h2>
-		<table style="width: 600px; border-top: 1px solid black;">
-			<tr>
-				<td style="width: 200px;"><label>Start date:</label></td>
-				<td><input type="date" ng-model="booking.startDate" placeholder="yyyy-MM-dd" min="2013-01-01" max="2020-12-31" required /><br /></td>
-			</tr>
-			<tr>
-				<td><label>End date:</label></td>
-				<td><input type="date" ng-model="booking.endDate" placeholder="yyyy-MM-dd" min="2013-01-01" max="2020-12-31" required /></td>
-			</tr>
-			<tr>
-				<td><label>Deposit:</label></td>
-				<td><input type="number" ng-model="booking.deposit" min="0.00" step="0.01" required /></td>
-			</tr>
-			<tr>
-				<td><label>Guests:</label></td>
-				<td>
-					<table style="border: none;">
-						<tr><td style="font-weight: bold;" colspan="4">&nbsp;</td></tr>
-						<tr>
-							<td><label>First name</label></td>
-							<td><label>Last name</label></td>
-							<td><label>Phone number</label></td>
-						</tr>
-						<tr ng-repeat="guest in booking.guests">
-							<td>{{ guest.firstName }}</td>
-							<td>{{ guest.lastName }}</td>
-							<td>{{ guest.phoneNumber }}</td>
-							<td><a href="" ng-click="removeGuestFromBooking($index)">Remove</a></td>
-						</tr>
-						<tr>
-							<td colspan="4">
-								<hr style="border: 1px solid black;"/>
-								<br />
-								<h1>Add new guest</h1>
-								<table style="border: none;">
-									<tr>
-										<td style="width: 200px;"><label>First name:</label></td>
-										<td><label>Last name:</label></td>
-										<td colspan="2"><label>Phone number:</label></td>
-									</tr>
-									<tr>
-										<td><input type="text" ng-model="newGuest.firstName"/><br /></td>
-										<td><input type="text" ng-model="newGuest.lastName"/></td>
-										<td><input type="text" ng-model="newGuest.phoneNumber"/></td>
-										<td><a href="" ng-click="saveNewGuest()">Add</a></td>
-									</tr>
-								</table>
-								<h1>Search existing guests</h1>
-								<md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="guest in searchGuests(searchText)" md-item-text="guest.firstName + ' ' + guest.lastName + ' ' + guest.phoneNumber">
-									<md-item-template>
-										<span md-highlight-text="searchText">{{ guest.firstName + ' ' + guest.lastName + ' ' + guest.phoneNumber }}</span>
-									</md-item-template>
-								</md-autocomplete>
-								<br />
-								<a href="" ng-click="addExistingGuestFromSearch(selectedItem)">Add existing guest</a>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr style="border-bottom: 1px solid black;">
-				<td><label>Room:</label></td>
-				<td>
-					<select type="number" ng-model="booking.room" required>
-						<option ng-repeat="room in rooms" value="{{ room.id }}">{{ room.name }}</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2"><br /><a href="" ng-click="saveBooking()">Save booking</a></td>
-			</tr>
-		</table>
+	<md-content layout="column">
+		<section layout="row">
+			<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" style="min-width: 800px;">
+				<md-toolbar class="md-theme-indigo">
+					<h1 class="md-toolbar-tools">New booking</h1>
+				</md-toolbar>
+				<md-content>
+					<booking-form booking="booking" mode="create" on-save-booking="bookingSaved(booking)" />
+				</md-content>
+			</md-sidenav>
+			<md-sidenav class="md-sidenav-right" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" 
+				style="min-width: 400px;">
+				<md-toolbar class="md-theme-indigo">
+					<h1 class="md-toolbar-tools">Bookings</h1>
+				</md-toolbar>
+				<md-content>
+					<md-list>
+						<md-list-item class="md-3-line" ng-repeat="booking in bookings">
+							<div class="md-list-item-text" layout="column">
+								<h3><b>booking by:</b> {{ booking.guests[0].firstName }} {{ booking.guests[0].lastName }}</h3>
+								<h4><b>from:</b> {{ booking.startDate | date : 'MMMM dd'}}, <b>till:</b> {{ booking.endDate | date : 'MMMM dd'}}</h4>
+							</div>
+						</md-list-item>
+					</md-list>
+				</md-content>
+			</md-sidenav>
+		</section>
 	</md-content>
 </div>

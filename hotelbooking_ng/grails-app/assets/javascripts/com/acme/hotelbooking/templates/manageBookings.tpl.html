@@ -1,0 +1,35 @@
+<div layout="column" ng-cloak="" style="width: 100%;">
+	<md-content style="width: 1000px;">
+		<div ng-if="statusMessage" id="statusMessage">
+			<b layout="row" layout-align="center center" class="md-padding">{{ statusMessage }}</b>
+		</div>
+	</md-content>
+
+	<section layout="row">
+		<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" style="min-width: 400px;">
+			<md-toolbar class="md-theme-indigo">
+				<h1 class="md-toolbar-tools">Bookings</h1>
+			</md-toolbar>
+			<md-content>
+				<md-list>
+					<md-list-item class="md-3-line" ng-repeat="booking in bookings" ng-click="showEditBookingSidenav(booking)">
+						<div class="md-list-item-text" layout="column">
+							<h3><b>booking by:</b> {{ booking.guests[0].firstName }} {{ booking.guests[0].lastName }}</h3>
+							<h4><b>from:</b> {{ booking.startDate | date : 'MMMM dd'}}, <b>till:</b> {{ booking.endDate | date : 'MMMM dd'}}</h4>
+						</div>
+					</md-list-item>
+				</md-list>
+			</md-content>
+		</md-sidenav>
+
+		<md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="edit-booking-sidenav" md-disable-backdrop="" 
+				md-is-locked-open="isOpenEditBookingSidenav()" style="min-width: 800px;">
+			<md-toolbar class="md-theme-light">
+				<h1 class="md-toolbar-tools">Edit Booking</h1>
+			</md-toolbar>
+			<md-content>
+				<booking-form booking="selectedBooking" mode="edit" on-save-booking="bookingSaved(booking)" on-cancel-booking="bookingCanceled()" />
+			</md-content>
+		</md-sidenav>
+	</section>
+</div>

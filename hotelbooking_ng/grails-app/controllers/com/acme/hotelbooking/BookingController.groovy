@@ -24,6 +24,11 @@ class BookingController {
             return
         }
 
+        // FIXME should save guests without this code
+        if (booking.guests != null) {
+            booking.guests.each { guest -> booking.addToGuests(guest) }
+        }
+
         try {
             bookingService.save(booking)
         } catch (ValidationException e) {
@@ -56,6 +61,10 @@ class BookingController {
             return
         }
 
+        def booking = bookingService.get(id)
+        def bookingGuests = []
+        booking.guests.each { guest -> bookingGuests << guest }
+        bookingGuests.each { guest -> booking.removeFromGuests(guest) }
         bookingService.delete(id)
 
         render status: NO_CONTENT
