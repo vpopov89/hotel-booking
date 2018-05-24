@@ -19,12 +19,15 @@ class BookingController {
     }
 
     def save(Booking booking) {
+
+        println "VIKTOR_" + booking.guests
+
         if (booking == null) {
             render status: NOT_FOUND
             return
         }
 
-        // FIXME should save guests without this code
+        // FIXME should save guests in a more proper way
         if (booking.guests != null) {
             booking.guests.each { guest -> booking.addToGuests(guest) }
         }

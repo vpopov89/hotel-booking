@@ -38,7 +38,7 @@ class BootStrap {
 	    	room: rooms[0]).addToGuests(guests[0]).addToGuests(guests[1]),
 	    	new Booking(
 	    	startDate: new Date().parse('yyyy/MM/dd', '2018/05/13'), 
-	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/20'), 
+	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/24'), 
 	    	deposit: 2.0,
 	    	room: rooms[0]).addToGuests(guests[0]).addToGuests(guests[1]),
 	    	new Booking(
@@ -48,7 +48,7 @@ class BootStrap {
 	    	room: rooms[1]).addToGuests(guests[0]).addToGuests(guests[1]),
 	    	new Booking(
 	    	startDate: new Date().parse('yyyy/MM/dd', '2018/05/13'), 
-	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/20'), 
+	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/24'), 
 	    	deposit: 4.0,
 	    	room: rooms[1]).addToGuests(guests[0]).addToGuests(guests[1]),
 	    	new Booking(
@@ -58,27 +58,27 @@ class BootStrap {
 	    	room: rooms[2]).addToGuests(guests[0]).addToGuests(guests[1]),
 	    	new Booking(
 	    	startDate: new Date().parse('yyyy/MM/dd', '2018/05/12'), 
-	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/20'), 
+	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/24'), 
 	    	deposit: 6.0,
 	    	room: rooms[2]).addToGuests(guests[0]).addToGuests(guests[1]),
 	    	new Booking(
 	    	startDate: new Date().parse('yyyy/MM/dd', '2018/05/09'), 
-	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/20'), 
+	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/24'), 
 	    	deposit: 7.0,
 	    	room: rooms[3]).addToGuests(guests[0]).addToGuests(guests[1]),
 	    	new Booking(
 	    	startDate: new Date().parse('yyyy/MM/dd', '2018/05/09'), 
-	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/20'), 
+	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/24'), 
 	    	deposit: 8.0,
 	    	room: rooms[4]).addToGuests(guests[0]).addToGuests(guests[1]),
 	    	new Booking(
 	    	startDate: new Date().parse('yyyy/MM/dd', '2018/05/09'), 
-	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/20'), 
+	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/24'), 
 	    	deposit: 9.0,
 	    	room: rooms[5]).addToGuests(guests[0]).addToGuests(guests[1]),
 	    	new Booking(
 	    	startDate: new Date().parse('yyyy/MM/dd', '2018/05/09'), 
-	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/20'), 
+	    	endDate: new Date().parse('yyyy/MM/dd', '2018/05/24'), 
 	    	deposit: 10.0,
 	    	room: rooms[6]).addToGuests(guests[0]).addToGuests(guests[1])
 	    ]
